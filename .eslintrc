@@ -1,0 +1,23 @@
+{
+"parser":"babel-eslint",
+"extends":"airbnb",
+"ecmaFeatures": {
+  "jsx":true,
+  "modules":true,
+  "experimentalOpjectRestSpread":true,
+  "impliedStrict":true
+  },
+  "env": {
+    "browser":true,
+    "node":true
+    # "mocha":true,
+    },
+  "rules": {
+    "semi": [ 2, "never" ],
+    "quote-props": [1, "consistent-as-needed"],
+    },
+    "plugins": [
+    "babel",
+    "react"
+  ]
+}

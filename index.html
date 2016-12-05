@@ -8,21 +8,40 @@
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="float-grid.css">
   </head>
-  <body>
-    <main>
- <header class="headerBox">Word Quiz: Choose the word that most describes you.  Pick it and drag it to the left box</header>
-<section class="contentBox col-6">
-  <div class="rightBox">This is the word quiz area</div>
-</section>
-<section class="contentBox col-6"><div class="rightBox">This is the word answers area</div>
-</section>
 
-<footer><footer>
+<body>
+  <main>
+    <header class="headerBox">
+      <h2>Word Quiz: Choose and click on the word or words that <span class="emphasis">most </span>describe you.</h2></header>
+
+    <section class="contentBox col-6 chooseWordBox">
+      <div class="boxTopLabel">This is the word quiz area</div>
+    </section>
+
+    <section class="contentBox col-6 answerListBox">
+      <div>List of words that "best" describe me</div>
+
+    </section>
+
+    <section class="col-2 button-container">
+      <p>
+        <a href="#" class="btn btn-red">NEXT</a>
+      </p>
+    </section>
+
+    <section class="contentBoxDescription col-12">
+      <p>Choose and click on words that <span class="emphasis">best </span>describes you over time, not just right now, but most of the time.  Words that you don't choose are words that would NOT best describe "you" most of the time. When finished selecting words use the submit button</p>
+    </section>
 
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="app.js"></script>
-</main>
-  </body>
+
+      <footer class="footer">This is the footer</footer>
+
+  </main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="app.js"></script>
+</body>
 </html>
