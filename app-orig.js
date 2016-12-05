@@ -4,17 +4,7 @@
 // when finished the NEXT button will be pressed to bring up the next set of randomly choosen words.
 // After all the word groups have been seen and selections made, then, based on the words choosen, and other keys related to those words are calculated, a personality profile will be displayed with information about their personality.
 
-var currentWords = [];
-var bestWords = [];
-
 $( function() {
-
-  displayWordGroup(keywords);
-
-  $('#btnNext').click(function(){
-    displayWordGroup(keywords);
-  });
-
   $( "#draggable" ).draggable();
   $( "#droppable" ).droppable({
     drop: function( event, ui ) {
@@ -24,9 +14,12 @@ $( function() {
           .html( "Dropped!" );
     }
   });
-});
+} );
 
 
+// the keywords array.
+import keywordsArray from ./keywordsArray.js
+const keywords = (./keywordsArray.js);
 
 // function randomNoRepeats(keywords) {
 //   var copy = keywords.slice(0);
@@ -46,25 +39,18 @@ $( function() {
 // chooser(); // => "Foo" -- only repeats once all items are exhausted.
 
 
-function displayWordGroup(keywords){
-
-  if(keywords.length == 0){
-    //end of list
-  } else {
-
-    currentWords = [];
-    $('.wordlist').empty();
-
-    for (var i = 0; i < 5; i++) {
-      var rnd = Math.floor(Math.random() * keywords.length);
-      var word = keywords[rnd];
-      currentWords.push(word);
-      keywords.splice(rnd, 1);
-      $('.wordlist').append('<li>' + word.word + '</li>');
-    }
-
-    console.log(currentWords);
-
-  }
-
+function diplayWordGroup(keywords){
+  var rnd=Math.random()*5;
+  rnd=Math.ceil(rnd);
+  var word1 = rnd.keywordsArray.id.num;
+  var word2;
+  var word3;
+  var word4;
+  var word5;
 }
+
+if(rnd==n){q1=questionBank[questionNumber][1];q2=questionBank[questionNumber][2];q3=questionBank[questionNumber][3];}
+if(rnd==2){q2=questionBank[questionNumber][1];q3=questionBank[questionNumber][2];q1=questionBank[questionNumber][3];}
+if(rnd==3){q3=questionBank[questionNumber][1];q1=questionBank[questionNumber][2];q2=questionBank[questionNumber][3];}
+
+$(stage).append('<div class="questionText">'+questionBank[questionNumber][0]+'</div><div id="1" class="option">'+q1+'</div><div id="2" class="option">'+q2+'</div><div id="3" class="option">'+q3+'</div>');
