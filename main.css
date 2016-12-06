@@ -89,7 +89,18 @@ main .row {
     background-color: #efefef;
     text-align: center;
   }
-/* button code*/
+
+  .word:hover {
+    border: 1px solid yellow;
+    background-color: yellow;
+  }
+
+  li:hover {
+    border: 1px solid yellow;
+    background-color:yellow;
+  }
+
+/* BUTTONS CODE */
 
 .button-container p { margin-top: 10px; }
 
@@ -164,3 +175,31 @@ a.btn.btn-red {
 		background-color: #B32C24;
 		border-color: rgba(0,0,0,0.9);
 	}
+
+  /* Animate */
+
+  .ui-state-highlight {
+    border: 1px solid yellow;
+    background-color:yellow;
+}
+
+/* a LINKS CODE */
+
+a:link {
+    color: green;
+}
+
+/* visited link */
+a:visited {
+    color: green;
+}
+
+/* mouse over link */
+a:hover {
+    color: red;
+}
+
+/* selected link */
+a:active {
+    color: yellow;
+}

@@ -26,8 +26,6 @@ $( function() {
   });
 });
 
-
-
 // function randomNoRepeats(keywords) {
 //   var copy = keywords.slice(0);
 //   return function() {
@@ -45,7 +43,6 @@ $( function() {
 // chooser(); // => "Gah"
 // chooser(); // => "Foo" -- only repeats once all items are exhausted.
 
-
 function displayWordGroup(keywords){
 
   if(keywords.length == 0){
@@ -60,7 +57,7 @@ function displayWordGroup(keywords){
       var word = keywords[rnd];
       currentWords.push(word);
       keywords.splice(rnd, 1);
-      $('.wordlist').append('<li>' + word.word + '</li>');
+      $('.wordlist').append("<li class='word' id='draggable'>" + word.word + '</li>');
     }
 
     console.log(currentWords);
