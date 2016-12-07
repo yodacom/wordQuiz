@@ -26,6 +26,17 @@ $( function() {
   });
 });
 
+// CLICK TO MOVE WORD FROM NON SELECTED TO SELECTED
+
+function moveWord(elem){
+    if( $(elem).parent().attr("id") == "chooseWordBox" ){
+        $(elem).detach().appendTo('#answerListBox');
+    }
+    else{
+        $(elem).detach().appendTo('#chooseWordBox');
+    }
+}
+
 // function randomNoRepeats(keywords) {
 //   var copy = keywords.slice(0);
 //   return function() {
@@ -46,7 +57,7 @@ $( function() {
 function displayWordGroup(keywords){
 
   if(keywords.length == 0){
-    //end of list
+    $('.wordlist').append("<h3> End of list Press Next to see your profile </h3>");
   } else {
 
     currentWords = [];

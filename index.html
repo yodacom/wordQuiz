@@ -5,6 +5,8 @@
     <title>Word Test</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="float-grid.css">
   </head>
@@ -15,15 +17,23 @@
 
   <main>
     <section class="contentBox col-6 ">
-    <div class="chooseWordBox">
-      <div class="boxTopLabel">Choose word by clicking on it and dragging the words that best descibe you to the right hand list box</div>
+    <div class="chooseWordBox" id="chooseWordBox">
+      <div class="boxTopLabel">Choose word by clicking on the words that best descibe you </div>
           <ul class="wordlist">
           </ul>
+          <!-- Move Words test -->
+              <word id="word1" onclick="moveWord(this)" type="text" class="word">word1</word>
+              <word id="word2" onclick="moveWord(this)" type="text" class="word">word2</word>
+              <word id="word3" onclick="moveWord(this)" type="text" class="word">word3</word>
+      <!-- End chose word move function in html -->
+
     </div>
     </section>
 
+
+
     <section class="contentBox col-6">
-      <div class="answerListBox" id="droppable">
+      <div class="answerListBox" id="answerListBox">
         <div>List of words that "best" describe me</div>
         <ul class="bestWords"></ul>
       </div>
@@ -41,7 +51,11 @@
 
   </main>
 
-  <footer class="footer">This is the footer</footer>
+  <footer class="footer">
+    <a href="http://aktheos.com">Find out more about your typology here</a> <br />
+    <small>&copy; Copyright 2016 by YodaCom LLC. All Rights Reserved.</small>
+
+  </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
