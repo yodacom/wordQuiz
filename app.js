@@ -15,26 +15,39 @@ $( function() {
     displayWordGroup(keywords);
   });
 
-  $( "#draggable" ).draggable();
-  $( "#droppable" ).droppable({
-    drop: function( event, ui ) {
-      $( this )
-        .addClass( "ui-state-highlight" )
-        .find( "p" )
-          .html( "Dropped!" );
-    }
-  });
+  $('#chooseWordBox').on('click', '.word', moveWord);
+  $('#answerListBox').on('click', '.word', removeWord);
+
 });
 
 // CLICK TO MOVE WORD FROM NON SELECTED TO SELECTED
 
 function moveWord(elem){
-    if( $(elem).parent().attr("id") == "chooseWordBox" ){
-        $(elem).detach().appendTo('#answerListBox');
-    }
-    else{
-        $(elem).detach().appendTo('#chooseWordBox');
-    }
+    var word = $(this).text();
+    $(this).detach().appendTo('#answerListBox .bestWords');
+    var index = currentWords.findIndex(function(w){
+      return w.word == word;
+    });
+    bestWords.push(currentWords[index]);
+    currentWords.splice(index, 1);
+
+    console.log(currentWords);
+    console.log(bestWords);
+
+}
+
+function removeWord(){
+    var word = $(this).text();
+    $(this).detach().appendTo('#chooseWordBox .wordlist');
+
+    var index = bestWords.findIndex(function(w){
+        return w.word == word;
+    });
+    currentWords.push(bestWords[index]);
+    bestWords.splice(index, 1);
+
+    console.log(currentWords);
+    console.log(bestWords);
 }
 
 // function randomNoRepeats(keywords) {
@@ -57,7 +70,10 @@ function moveWord(elem){
 function displayWordGroup(keywords){
 
   if(keywords.length == 0){
-    $('.wordlist').append("<h3> End of list Press Next to see your profile </h3>");
+    $('.wordlist').append("<h3> End of list Press Next to see your profile </h4>");
+    $('#btnNext').off();
+    $('#btnNext').click(analysis);
+    $('#btnNext').text('Analysis');
   } else {
 
     currentWords = [];
@@ -68,11 +84,16 @@ function displayWordGroup(keywords){
       var word = keywords[rnd];
       currentWords.push(word);
       keywords.splice(rnd, 1);
-      $('.wordlist').append("<li class='word' id='draggable'>" + word.word + '</li>');
+      $('.wordlist').append("<span class='word'>" + word.word + '</span>');
     }
 
     console.log(currentWords);
 
   }
 
+}
+
+function analysis (){
+  console.log('Perform analysis here');
+  //check bestWords array
 }

@@ -94,7 +94,9 @@ main .row {
     font-family: inherit;
     font-style: italic;
     color: inherit;
-  }
+    display:block;
+    cursor: pointer;
+ }
 
   .word:hover {
     border: 1px solid yellow;
