@@ -76,6 +76,13 @@ main .row {
   padding:10px;
 }
 
+.personalityReport {
+  text-align: justify;
+  padding: 10px;
+  font-size: 24px;
+  
+}
+
 .emphasis {
   font-weight: bolder;
   text-decoration: underline;
@@ -114,9 +121,13 @@ main .row {
 
 /* BUTTONS CODE */
 
-.button-container p { margin-top: 10px; }
+.button-container p {
+  margin-top: 10px;
+}
 
-a { text-decoration: none; margin: 0 10px; }
+a { text-decoration: none;
+   margin: 0 10px;
+  }
 
 .button-container {
 	min-height: 50px;

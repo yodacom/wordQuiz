@@ -17,6 +17,7 @@ $( function() {
 
   $('#chooseWordBox').on('click', '.word', moveWord);
   $('#answerListBox').on('click', '.word', removeWord);
+  $('#btnNext Analysis').on('click', 'analysis');
 
 });
 
@@ -50,23 +51,6 @@ function removeWord(){
     console.log(bestWords);
 }
 
-// function randomNoRepeats(keywords) {
-//   var copy = keywords.slice(0);
-//   return function() {
-//     if (copy.length < 1) { copy = array.slice(0); }
-//     var index = Math.floor(Math.random() * copy.length);
-//     var item = copy[index];
-//     copy.splice(index, 1);
-//     return item;
-//   };
-// }
-//
-// var chooser = randomNoRepeats(['Foo', 'Bar', 'Gah']);
-// choose`r(); // => "Bar"
-// chooser(); // => "Foo"
-// chooser(); // => "Gah"
-// chooser(); // => "Foo" -- only repeats once all items are exhausted.
-
 function displayWordGroup(keywords){
 
   if(keywords.length == 0){
@@ -90,10 +74,79 @@ function displayWordGroup(keywords){
     console.log(currentWords);
 
   }
+}
+// for now I just want to bring up the sum of the each of the "center" properties of the chosen words.  There are three centers: "In" "FE" "TH" we will count occurances of each in the bestWords array and the highest count will be output.
 
+// test
+
+// FIRST ATTEMPT
+
+// function analysis (){
+//   $('btnNext').click(function(){
+//     bestWords.count("FE");
+//     bestWords.count("IN");
+//     bestwords.count("TH");
+//     console.log(bestwords.count("TH")); //Whichever of these three is the highest count we determine that one as the dominent personality "center" and report that here.  If a tie ??
+//   });
+// }
+//   Array.prototype.count = function(obj){
+//      var count = this.length;
+//      if(typeof(obj) !== "undefined"){
+//          var array = this.slice(0), count = 0; // clone array and reset count
+//          for(i = 0; i < array.length; i++){
+//              if(array[i] == obj){
+//                  count++;
+//              }
+//          }
+//      }
+//      return count;
+//  }
+
+// SECOND ATTEMPT
+
+// function analysis () {
+// var initalValue = {};
+//
+// var reducer = function(tally, traitCount){
+//   if (!tally[traitCount]) {
+//     tally[traitCount] = 1;
+//   } else {
+//     tally[traitCount] = tally[traitCount + 1];
+//   }
+//   return tally;
+//  };
+//
+// var result = bestWords.reduce(reducer, initalValue);
+//
+// console.log(result);
+// }
+
+// THIRD ATTEMPT
+function analysis(){
+  count = function(ary, classifier) {
+      return ary.reduce(function(counter, item) {
+          var p = (classifier || String)(item);
+          counter[p] = counter.hasOwnProperty(p) ? counter[p] + 1 : 1;
+          return counter;
+      }, {})
+  }
+
+
+  countByCenter = count(bestWords, function(item) { return item.center });
+  console.log(countByCenter);
 }
 
-function analysis (){
-  console.log('Perform analysis here');
-  //check bestWords array
-}
+//   function personalityReport(countByCenter){
+//     if (FE.n > IN.n && TH.n){
+//     $('.personalityReport').append("<h3>" + Fe + "</h4>";)
+//   } else if (IN.n > FE.n && TH.n) {
+//       $('.personalityReport').append("<h3>" + In + "</h4>";)
+//   } else if (TH.n > FE.n && IN.n){
+//     $('.personalityReport').append("<h3>" + Th + "</h4>";)
+//   }
+//     else {
+//       $('.personalityReport').append("<h3>" + Ba + "</h4>";)
+//     }
+//   }
+//
+// }
