@@ -11,7 +11,8 @@ $( function() {
 
   displayWordGroup(keywords);
 
-  $('#btnNext').click(function(){
+  $('#btnNext').click(function(e){
+    e.preventDefault();
     displayWordGroup(keywords);
   });
 
@@ -77,49 +78,6 @@ function displayWordGroup(keywords){
 }
 // for now I just want to bring up the sum of the each of the "center" properties of the chosen words.  There are three centers: "In" "FE" "TH" we will count occurances of each in the bestWords array and the highest count will be output.
 
-// test
-
-// FIRST ATTEMPT
-
-// function analysis (){
-//   $('btnNext').click(function(){
-//     bestWords.count("FE");
-//     bestWords.count("IN");
-//     bestwords.count("TH");
-//     console.log(bestwords.count("TH")); //Whichever of these three is the highest count we determine that one as the dominent personality "center" and report that here.  If a tie ??
-//   });
-// }
-//   Array.prototype.count = function(obj){
-//      var count = this.length;
-//      if(typeof(obj) !== "undefined"){
-//          var array = this.slice(0), count = 0; // clone array and reset count
-//          for(i = 0; i < array.length; i++){
-//              if(array[i] == obj){
-//                  count++;
-//              }
-//          }
-//      }
-//      return count;
-//  }
-
-// SECOND ATTEMPT
-
-// function analysis () {
-// var initalValue = {};
-//
-// var reducer = function(tally, traitCount){
-//   if (!tally[traitCount]) {
-//     tally[traitCount] = 1;
-//   } else {
-//     tally[traitCount] = tally[traitCount + 1];
-//   }
-//   return tally;
-//  };
-//
-// var result = bestWords.reduce(reducer, initalValue);
-//
-// console.log(result);
-// }
 
 // THIRD ATTEMPT
 function analysis(){
@@ -133,20 +91,22 @@ function analysis(){
 
 
   countByCenter = count(bestWords, function(item) { return item.center });
-  console.log(countByCenter);
+  personalityReport(countByCenter);
 }
+// GENERATE REPORT
 
-//   function personalityReport(countByCenter){
-//     if (countByCenter.FE > countByCenter.IN && countByCenter.TH){
-//      $('.personalityReport').append("<h3>" + Fe + "</h4>";)
-//   } else if (countByCenter.IN > countByCenter.FE && countByCenter.TH) {
-//       $('.personalityReport').append("<h3>" + In + "</h4>";)
-//   } else if (countByCenter.TH > countByCenter.IN && countByCenter.FE){
-//     $('.personalityReport').append("<h3>" + Th + "</h4>";)
-//   }
-//     else {
-//       $('.personalityReport').append("<h3>" + Ba + "</h4>";)
-//     }
-//   }
-//
-// }
+  function personalityReport(countByCenter){
+    $(".contentBox").hide();
+    $('.headerBox').hide();
+    $('.contentBoxDescription').hide();
+    if (countByCenter.FE > countByCenter.IN &&  countByCenter.FE > countByCenter.TH){
+     $('.personalityReport').append("<h3>" + Fe + "</h4>");
+  } else if (countByCenter.IN > countByCenter.FE && countByCenter.IN > countByCenter.TH) {
+      $('.personalityReport').append("<h3>" + In + "</h4>");
+  } else if (countByCenter.TH > countByCenter.IN && countByCenter.TH > countByCenter.FE){
+    $('.personalityReport').append("<h3>" + Th + "</h4>");
+  }
+    else {
+      $('.personalityReport').append("<h3>" + Ba + "</h4>");
+    }
+  }
