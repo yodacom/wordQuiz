@@ -137,11 +137,11 @@ function analysis(){
 }
 
 //   function personalityReport(countByCenter){
-//     if (FE.n > IN.n && TH.n){
-//     $('.personalityReport').append("<h3>" + Fe + "</h4>";)
-//   } else if (IN.n > FE.n && TH.n) {
+//     if (countByCenter.FE > countByCenter.IN && countByCenter.TH){
+//      $('.personalityReport').append("<h3>" + Fe + "</h4>";)
+//   } else if (countByCenter.IN > countByCenter.FE && countByCenter.TH) {
 //       $('.personalityReport').append("<h3>" + In + "</h4>";)
-//   } else if (TH.n > FE.n && IN.n){
+//   } else if (countByCenter.TH > countByCenter.IN && countByCenter.FE){
 //     $('.personalityReport').append("<h3>" + Th + "</h4>";)
 //   }
 //     else {
