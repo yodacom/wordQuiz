@@ -98,6 +98,7 @@ function analysis(){
   function personalityReport(countByCenter){
     $(".contentBox").hide();
     $('.headerBox').hide();
+    $('.contentBoxDescription').hide();
     if (countByCenter.FE > countByCenter.IN &&  countByCenter.FE > countByCenter.TH){
      $('.personalityReport').append("<h3>" + Fe + "</h4>");
   } else if (countByCenter.IN > countByCenter.FE && countByCenter.IN > countByCenter.TH) {
