@@ -28,18 +28,34 @@ main {
   max-width: 640px;
   width: 94%;
   border: 1px solid blue;
-  overflow: auto;
+  display:flex;
+  flex-basis: 600px;
+  flex-direction: column;
 }
 
-main .row {
-  margin-bottom: 20px;
+.row{
+    flex-shrink:1;
+    display:flex;
+    flex-direction: row;
+}
+
+.words{
+    flex-grow:2;
+}
+
+.actions{
+    flex-grow:1;
 }
 
 .contentBox {
-  text-align: auto;
   padding-top: 30px;
   padding-left: 20px;
   padding-right: 20px;
+    flex: 1;
+    width:50%;
+    display:flex;
+    flex-direction: column;
+    min-height:400px;
 }
 .headerBox {
   text-align: center;
@@ -51,24 +67,23 @@ main .row {
 }
 
 .answerListBox {
-  height: 400px;
   text-align: center;
   padding-top: 30px;
   padding-left: 20px;
   padding-right: 0px;
   border: 1px solid gray;
   margin-bottom: 20px;
+    flex:1;
 }
 
 .chooseWordBox {
-  height: 400px;
   text-align: center;
   padding-top: 30px;
   padding-left: 20px;
   padding-right: 20px;
   border: 1px solid gray;
   margin-bottom: 20px;
-
+    flex:1;
 }
 
 .contentBoxDescription {
