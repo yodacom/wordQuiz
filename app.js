@@ -55,7 +55,7 @@ function removeWord(){
 function displayWordGroup(keywords){
 
   if(keywords.length == 0){
-    $('.wordlist').append("<h3> End of list Press Next to see your profile </h4>");
+    $('.wordlist').append("<h3> End of list Press the Analysis button to see your profile </h4>");
     $('#btnNext').off();
     $('#btnNext').click(analysis);
     $('#btnNext').text('Analysis');
@@ -76,6 +76,7 @@ function displayWordGroup(keywords){
 
   }
 }
+
 // for now I just want to bring up the sum of the each of the "center" properties of the chosen words.  There are three centers: "In" "FE" "TH" we will count occurances of each in the bestWords array and the highest count will be output.
 
 
