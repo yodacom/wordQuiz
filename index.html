@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <title>Word Test</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
@@ -9,59 +9,61 @@
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="float-grid.css">
-  </head>
+</head>
 
 <body>
-  <header class="headerBox">
+<header class="headerBox">
     <h2>Word Quiz: Choose and click on the word or words that <span class="emphasis">most </span>describe you.</h2>
-  </header>
+</header>
 
-  <section class="contentBoxDescription col-12">
-    <p>Choose and click on words that <span class="emphasis">best </span>describes you over time, not just right now, but most of the time.  Words that you don't choose are words that would NOT best describe "you" most of the time. When finished selecting words from each group press the "NEXT" button. </p>
-  </section>
+<section class="contentBoxDescription col-12">
+    <p>Choose and click on words that <span class="emphasis">best </span>describes you over time, not just right now,
+        but most of the time. Words that you don't choose are words that would NOT best describe "you" most of the time.
+        When finished selecting words from each group press the "NEXT" button. </p>
+</section>
 
-  <main>
-    <section class="contentBox col-6 ">
-    <div class="chooseWordBox" id="chooseWordBox">
-      <div class="boxTopLabel">Choose word by clicking on the words that best descibe you </div>
+<main>
+    <div class="row words">
+        <section class="contentBox">
+            <div class="chooseWordBox" id="chooseWordBox">
+                <div class="boxTopLabel">
+                    Choose word by clicking on the words that best descibe you
+                </div>
+                <div class="wordlist">
 
-      <div class="wordlist">
+                </div>
+            </div>
+        </section>
 
-      </div>
-
+        <section class="contentBox">
+            <div class="answerListBox" id="answerListBox">
+                <div>List of words that "best" describe me</div>
+                <div class="bestWords"></div>
+            </div>
+        </section>
     </div>
-    </section>
+
+    <div class="row actions">
+        <section class="personalityReport">
+            <p> put personality report results here </p>
+        </section>
+    </div>
+    <div class="row actions">
+        <section class="button-container">
+            <p>
+                <a href="#" class="btn btn-red" id="btnNext">NEXT</a>
+            </p>
+        </section>
+    </div>
 
 
+</main>
 
-    <section class="contentBox col-6">
-      <div class="answerListBox" id="answerListBox">
-        <div>List of words that "best" describe me</div>
-        <div class="bestWords"></div>
-      </div>
-    </section>
-
-    <section class="personalityReport col-12">
-        
-    </section>
-
-    <section class="col-2 button-container">
-      <p>
-        <a href="#" class="btn btn-red" id="btnNext">NEXT</a>
-      </p>
-    </section>
-
-
-
-
-
-  </main>
-
-  <footer class="footer">
-    <a href="http://aktheos.com">Find out more about your typology here</a> <br />
+<footer class="footer">
+    <a href="http://aktheos.com">Find out more about your typology here</a> <br/>
     <small>&copy; Copyright 2016 by YodaCom LLC. All Rights Reserved.</small>
 
-  </footer>
+</footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
