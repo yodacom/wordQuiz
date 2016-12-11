@@ -136,6 +136,16 @@ main {
 
 /* BUTTONS CODE */
 
+.refreshBtn, #ref_btn {
+  display: none;
+}
+
+.refreshPage {
+  text-align: center;
+  padding: 10px;
+  font-size: 24px;  
+}
+
 .button-container p {
   margin-top: 10px;
 }
@@ -205,7 +215,7 @@ a.btn.btn-red {
 /* a LINKS CODE */
 
 a:link {
-    color: green;
+    color: blue;
 }
 
 /* visited link */

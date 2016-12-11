@@ -19,6 +19,7 @@ $( function() {
   $('#chooseWordBox').on('click', '.word', moveWord);
   $('#answerListBox').on('click', '.word', removeWord);
   $('#btnNext Analysis').on('click', 'analysis');
+  $('#btnNext StartOver').on('click', 'refresh');
 
 });
 
@@ -74,13 +75,10 @@ function displayWordGroup(keywords){
 
     console.log(currentWords);
 
-  }
 }
 
-// for now I just want to bring up the sum of the each of the "center" properties of the chosen words.  There are three centers: "In" "FE" "TH" we will count occurances of each in the bestWords array and the highest count will be output.
 
-
-// THIRD ATTEMPT
+// Analysis function
 function analysis(){
   count = function(ary, classifier) {
       return ary.reduce(function(counter, item) {
@@ -97,9 +95,12 @@ function analysis(){
 // GENERATE REPORT
 
   function personalityReport(countByCenter){
-    $(".contentBox").hide();
+    $('.contentBox').hide();
     $('.headerBox').hide();
     $('.contentBoxDescription').hide();
+    $('.analysis').hide();
+    // $('.ref_btn').show();
+
     if (countByCenter.FE > countByCenter.IN &&  countByCenter.FE > countByCenter.TH){
      $('.personalityReport').append("<h3>" + Fe + "</h4>" + "<br/>" + More);
   } else if (countByCenter.IN > countByCenter.FE && countByCenter.IN > countByCenter.TH) {
@@ -108,6 +109,20 @@ function analysis(){
     $('.personalityReport').append("<h3>" + Th + "</h4>" + "<br/>" + More);
   }
     else {
-      $('.personalityReport').append("<h3>" + Ba + "</h4>");
+      $('.personalityReport').append("<h3>" + Ba + "</h4>" + "<br/>" + More);
     }
   }
+
+  //$('.refreshPage').append("<h4> To take the quiz again press the Refresh Button</h4>");
+  //$('#btnNext').off();
+  //$('#ref_btn').click(refreshPage);
+  //$('#ref_btn').show();
+  $('#ref_btn').text('Refresh');
+
+  function refreshPage(){
+    $("#ref_btn").click(function(){
+      location.reload();
+ });
+
+  }
+}
