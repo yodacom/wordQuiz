@@ -101,11 +101,11 @@ function analysis(){
     $('.headerBox').hide();
     $('.contentBoxDescription').hide();
     if (countByCenter.FE > countByCenter.IN &&  countByCenter.FE > countByCenter.TH){
-     $('.personalityReport').append("<h3>" + Fe + "</h4>");
+     $('.personalityReport').append("<h3>" + Fe + "</h4>" + "<br/>" + More);
   } else if (countByCenter.IN > countByCenter.FE && countByCenter.IN > countByCenter.TH) {
-      $('.personalityReport').append("<h3>" + In + "</h4>");
+      $('.personalityReport').append("<h3>" + In + "</h4>" + "<br/>" + More);
   } else if (countByCenter.TH > countByCenter.IN && countByCenter.TH > countByCenter.FE){
-    $('.personalityReport').append("<h3>" + Th + "</h4>");
+    $('.personalityReport').append("<h3>" + Th + "</h4>" + "<br/>" + More);
   }
     else {
       $('.personalityReport').append("<h3>" + Ba + "</h4>");
