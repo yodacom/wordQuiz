@@ -47,6 +47,10 @@ main {
     flex-grow:1;
 }
 
+.wordlist {
+    margin-top: 20px;
+}
+
 .contentBox {
   padding-top: 30px;
   padding-left: 20px;
@@ -135,9 +139,14 @@ main {
   }
 
 /* BUTTONS CODE */
-
+/*
 .refreshBtn, #ref_btn {
   display: none;
+}
+*/
+
+.reports {
+    display: none;
 }
 
 .refreshPage {

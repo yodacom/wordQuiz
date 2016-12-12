@@ -7,29 +7,29 @@
 var currentWords = [];
 var bestWords = [];
 
-$( function() {
+$(function () {
 
-  displayWordGroup(keywords);
-
-  $('#btnNext').click(function(e){
-    e.preventDefault();
     displayWordGroup(keywords);
-  });
 
-  $('#chooseWordBox').on('click', '.word', moveWord);
-  $('#answerListBox').on('click', '.word', removeWord);
-  $('#btnNext Analysis').on('click', 'analysis');
-  $('#btnNext StartOver').on('click', 'refresh');
+    $('#btnNext').click(function (e) {
+        e.preventDefault();
+        displayWordGroup(keywords);
+    });
+
+    $('#chooseWordBox').on('click', '.word', moveWord);
+    $('#answerListBox').on('click', '.word', removeWord);
+
+    $('#ref_btn').click(refreshPage);
 
 });
 
 // CLICK TO MOVE WORD FROM NON SELECTED TO SELECTED
 
-function moveWord(elem){
+function moveWord(elem) {
     var word = $(this).text();
     $(this).detach().appendTo('#answerListBox .bestWords');
-    var index = currentWords.findIndex(function(w){
-      return w.word == word;
+    var index = currentWords.findIndex(function (w) {
+        return w.word == word;
     });
     bestWords.push(currentWords[index]);
     currentWords.splice(index, 1);
@@ -39,11 +39,11 @@ function moveWord(elem){
 
 }
 
-function removeWord(){
+function removeWord() {
     var word = $(this).text();
     $(this).detach().appendTo('#chooseWordBox .wordlist');
 
-    var index = bestWords.findIndex(function(w){
+    var index = bestWords.findIndex(function (w) {
         return w.word == word;
     });
     currentWords.push(bestWords[index]);
@@ -53,76 +53,74 @@ function removeWord(){
     console.log(bestWords);
 }
 
-function displayWordGroup(keywords){
+function displayWordGroup(keywords) {
 
-  if(keywords.length == 0){
-    $('.wordlist').append("<h3> End of list Press the Analysis button to see your profile </h4>");
-    $('#btnNext').off();
-    $('#btnNext').click(analysis);
-    $('#btnNext').text('Analysis');
-  } else {
+    if (keywords.length == 0) {
+        $('.wordlist').append("<h3> End of list Press the Analysis button to see your profile </h4>");
+        $('#btnNext').off();
+        $('#btnNext').click(analysis);
+        $('#btnNext').text('Analysis');
+    } else {
 
-    currentWords = [];
-    $('.wordlist').empty();
+        currentWords = [];
+        $('.wordlist').empty();
 
-    for (var i = 0; i < 5; i++) {
-      var rnd = Math.floor(Math.random() * keywords.length);
-      var word = keywords[rnd];
-      currentWords.push(word);
-      keywords.splice(rnd, 1);
-      $('.wordlist').append("<span class='word'>" + word.word + '</span>');
+        for (var i = 0; i < 5; i++) {
+            var rnd = Math.floor(Math.random() * keywords.length);
+            var word = keywords[rnd];
+            currentWords.push(word);
+            keywords.splice(rnd, 1);
+            $('.wordlist').append("<span class='word'>" + word.word + '</span>');
+        }
+
+        console.log(currentWords);
+
     }
-
-    console.log(currentWords);
-
 }
-
 
 // Analysis function
-function analysis(){
-  count = function(ary, classifier) {
-      return ary.reduce(function(counter, item) {
-          var p = (classifier || String)(item);
-          counter[p] = counter.hasOwnProperty(p) ? counter[p] + 1 : 1;
-          return counter;
-      }, {})
-  }
+function analysis() {
+    count = function (ary, classifier) {
+        return ary.reduce(function (counter, item) {
+            var p = (classifier || String)(item);
+            counter[p] = counter.hasOwnProperty(p) ? counter[p] + 1 : 1;
+            return counter;
+        }, {})
+    }
 
 
-  countByCenter = count(bestWords, function(item) { return item.center });
-  personalityReport(countByCenter);
+    countByCenter = count(bestWords, function (item) {
+        return item.center
+    });
+    personalityReport(countByCenter);
 }
+
 // GENERATE REPORT
 
-  function personalityReport(countByCenter){
+function personalityReport(countByCenter) {
     $('.contentBox').hide();
     $('.headerBox').hide();
     $('.contentBoxDescription').hide();
-    $('.analysis').hide();
+    $('.actions').hide();
     // $('.ref_btn').show();
 
-    if (countByCenter.FE > countByCenter.IN &&  countByCenter.FE > countByCenter.TH){
-     $('.personalityReport').append("<h3>" + Fe + "</h4>" + "<br/>" + More);
-  } else if (countByCenter.IN > countByCenter.FE && countByCenter.IN > countByCenter.TH) {
-      $('.personalityReport').append("<h3>" + In + "</h4>" + "<br/>" + More);
-  } else if (countByCenter.TH > countByCenter.IN && countByCenter.TH > countByCenter.FE){
-    $('.personalityReport').append("<h3>" + Th + "</h4>" + "<br/>" + More);
-  }
-    else {
-      $('.personalityReport').append("<h3>" + Ba + "</h4>" + "<br/>" + More);
+    if (countByCenter.FE > countByCenter.IN && countByCenter.FE > countByCenter.TH) {
+        $('.personalityReport').append("<h3>" + Fe + "</h4>" + "<br/>" + More);
+    } else if (countByCenter.IN > countByCenter.FE && countByCenter.IN > countByCenter.TH) {
+        $('.personalityReport').append("<h3>" + In + "</h4>" + "<br/>" + More);
+    } else if (countByCenter.TH > countByCenter.IN && countByCenter.TH > countByCenter.FE) {
+        $('.personalityReport').append("<h3>" + Th + "</h4>" + "<br/>" + More);
     }
-  }
+    else {
+        $('.personalityReport').append("<h3>" + Ba + "</h4>" + "<br/>" + More);
+    }
 
-  //$('.refreshPage').append("<h4> To take the quiz again press the Refresh Button</h4>");
-  //$('#btnNext').off();
-  //$('#ref_btn').click(refreshPage);
-  //$('#ref_btn').show();
-  $('#ref_btn').text('Refresh');
 
-  function refreshPage(){
-    $("#ref_btn").click(function(){
-      location.reload();
- });
-
-  }
+    $('.reports').show();
 }
+
+
+function refreshPage() {
+    location.reload();
+}
+
