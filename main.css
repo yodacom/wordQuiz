@@ -51,6 +51,10 @@ main {
     margin-top: 20px;
 }
 
+.bestWords {
+  margin-top: 20px;
+}
+
 .contentBox {
   padding-top: 30px;
   padding-left: 20px;
@@ -78,6 +82,7 @@ main {
   border: 1px solid gray;
   margin-bottom: 20px;
     flex:1;
+    /*border: 1px solid blue;*/
 }
 
 .chooseWordBox {
