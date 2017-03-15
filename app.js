@@ -88,7 +88,6 @@ function analysis() {
         }, {})
     }
 
-
     countByCenter = count(bestWords, function (item) {
         return item.center
     });
@@ -97,12 +96,16 @@ function analysis() {
 
 // GENERATE REPORT
 
+// Personality Analysis
+
 function personalityReport(countByCenter) {
+    // hide quiz boxes to show report
     $('.contentBox').hide();
     $('.headerBox').hide();
     $('.contentBoxDescription').hide();
     $('.actions').hide();
-    // $('.ref_btn').show();
+    
+// Center Analysis
 
     if (countByCenter.FE > countByCenter.IN && countByCenter.FE > countByCenter.TH) {
         $('.personalityReport').append("<h3>" + Fe + "</h4>" + "<br/>" + More);
@@ -124,3 +127,17 @@ function refreshPage() {
     location.reload();
 }
 
+personalityReport(countByPrimary) {
+
+    if countByPrimary.R >countByPrimary.B &&countByPrimary.R >countByPrimary.G) {
+        $('.personalityReport').append("<h3>" + R + "</h4>" + "<br/>" + More);
+    } else if countByPrimary.B >countByPrimary.R &&countByPrimary.B >countByPrimary.G) {
+        $('.personalityReport').append("<h3>" + B + "</h4>" + "<br/>" + More);
+    } else if countByPrimary.G >countByPrimary.R &&countByPrimary.G >countByPrimary.R) {
+        $('.personalityReport').append("<h3>" + G + "</h4>" + "<br/>" + More);
+    }
+    else {
+        $('.personalityReport').append("<h3>" + Ba + "</h4>" + "<br/>" + More);
+    }
+
+}

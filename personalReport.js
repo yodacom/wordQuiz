@@ -1,6 +1,28 @@
 const In = 'Your dominant personal center is: Intuitive';
 const Fe = 'Your dominant personal center is: Feeling';
 const Th = 'Your dominant personal center is: Thinking';
+const R = 'Your Primary is R';
+const B = 'Your Primary is B';
+const G = 'Your Primary is G';
+const o = 'Your Secondary is o';
+const f = 'Your Secondary is f';
+const g = 'Your Secondary is g';
+const t = 'Your Secondary is t';
+const l = 'Your Secondary is l';
+const p = 'Your Secondary is p';
+const w = 'Your Secondary is w';
+const b = 'Your Secondary is b';
+const r = 'Your Secondary is r';
+const 1 = 'Your Type is 1';
+const 2 = 'Your Type is 2';
+const 3 = 'Your Type is 3';
+const 4 = 'Your Type is 4';
+const 5 = 'Your Type is 5';
+const 6 = 'Your Type is 6';
+const 7 = 'Your Type is 7';
+const 8 = 'Your Type is 8';
+const 9 = 'Your Type is 9';
+
 const Ba = 'You do not have a dominant personal center type yet.  You may want to review your word choices again.';
 const fullLink = "<a href='http://www.aktheos.com'>Your personal growth path report</a>";
 const More = ` For more more information on your traits and personality check out ${fullLink} to explore more deeply more aspects of your personal profile `;
