@@ -127,13 +127,13 @@ function refreshPage() {
     location.reload();
 }
 
-personalityReport(countByPrimary) {
+function personalityReport2(countByPrimary) {
 
-    if countByPrimary.R >countByPrimary.B &&countByPrimary.R >countByPrimary.G) {
+    if (countByPrimary.R >countByPrimary.B &&countByPrimary.R >countByPrimary.G) {
         $('.personalityReport').append("<h3>" + R + "</h4>" + "<br/>" + More);
-    } else if countByPrimary.B >countByPrimary.R &&countByPrimary.B >countByPrimary.G) {
+    } else if (countByPrimary.B >countByPrimary.R &&countByPrimary.B >countByPrimary.G) {
         $('.personalityReport').append("<h3>" + B + "</h4>" + "<br/>" + More);
-    } else if countByPrimary.G >countByPrimary.R &&countByPrimary.G >countByPrimary.R) {
+    } else if (countByPrimary.G >countByPrimary.R &&countByPrimary.G >countByPrimary.R) {
         $('.personalityReport').append("<h3>" + G + "</h4>" + "<br/>" + More);
     }
     else {
