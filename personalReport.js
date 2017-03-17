@@ -14,7 +14,7 @@ const w = 'Your Secondary is w';
 const b = 'Your Secondary is b';
 const r = 'Your Secondary is r';
 
-const 1 = 'Your Type is 1 - The Reformer (the principled, idealistic type) Ones are conscientious and ethical, with a strong sense of right and wrong. They are teachers, crusaders, and advocated for change: always striving to improve things, but afraid of making a mistake.<br>Well-organized, orderly, and fastidious, they try to maintain high standards, but can slip into being critical and perfectionistic. They typically have problems with resentment and impatience.<br><b>At their best: Wise, discerning, realistic, noble, and morally heroic.';
+const one = 'Your Type is 1 - The Reformer (the principled, idealistic type) Ones are conscientious and ethical, with a strong sense of right and wrong. They are teachers, crusaders, and advocated for change: always striving to improve things, but afraid of making a mistake.<br>Well-organized, orderly, and fastidious, they try to maintain high standards, but can slip into being critical and perfectionistic. They typically have problems with resentment and impatience.<br><b>At their best: Wise, discerning, realistic, noble, and morally heroic.';
 
 const 2 = 'Your Type is 2 - The Helper (the caring, interpersonal type) Twos are empathetic, sincere, and warm-hearted. They are friendly, generous, and self sacrificing, but an also be sentimental, flattering, and people-pleasing. They are well-meaning and driven to be close to others, but can slip into doing things for other in order to be needed.  They typically have problems with possessiveness and with acknowledging their own needs. At their best: unselfish and altruistic, with unconditional love for others.';
 
