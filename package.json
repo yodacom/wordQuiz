@@ -4,7 +4,8 @@
   "description": "This quiz evaluates personality type by letting user choose words and based on words choosen and attributes attached to each word selected evaluate to a personality typology grouped into 9 types and subtypes.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack",
+    "start": "node_modules/.bin/webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,8 @@
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.0",
     "babel-preset-env": "^1.2.1",
-    "webpack": "^2.2.1"
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
     "jquery": "^3.1.1",

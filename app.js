@@ -1,3 +1,6 @@
+let $ = require('jquery');
+import {Person, PersonalityType} from './person';
+
 /* eslint-env jquery */
 
 // I want to pick 5 random words from the object array and display them.  then user will choose one or more of the five words to add to a list that is "most like me".  Then with a continue button go back to the array and display another set of 5 words. keep doing this till all the words of the array have been viewed.  Choosing words by clicking on them, highligting them, and then drag and drop them to the other list box (OR prefer to click on word and have it animate and move to the other list box.)
@@ -74,7 +77,7 @@ $(() => {
 
 // Analysis function
 function analysis() {
-  count = function (ary, classifier) {
+  let count = function (ary, classifier) {
     return ary.reduce((counter, item) => {
         let p = (classifier || String)(item);
         counter[p] = counter.hasOwnProperty(p) ? counter[p] + 1 : 1;
@@ -82,7 +85,7 @@ function analysis() {
       }, {});
   };
 
-  countByCenter = count(bestWords, (item) => {
+  let countByCenter = count(bestWords, (item) => {
     return item.center;
   });
   personalityReport(countByCenter);
@@ -102,17 +105,16 @@ function personalityReport(countByCenter) {
   $('.actions').hide();
 
 // Center Analysis
-
-  if (countByCenter.FE > countByCenter.IN && countByCenter.FE > countByCenter.TH) {
-    $('.personalityReport').append('<h3>' + Fe + '</h4>' + '<br/>' + More);
-  } else if (countByCenter.IN > countByCenter.FE && countByCenter.IN > countByCenter.TH) {
-      $('.personalityReport').append('<h3>' + In + '</h4>' + '<br/>' + More);
-    } else if (countByCenter.TH > countByCenter.IN && countByCenter.TH > countByCenter.FE) {
-      $('.personalityReport').append('<h3>' + Th + '</h4>' + '<br/>' + More);
-    }    else {
-      $('.personalityReport').append('<h3>' + Ba + '</h4>' + '<br/>' + More);
-    }
-
+  let highest = '';
+  if(countByCenter.FE > countByCenter.IN){
+    highest = 'FE';
+  }else{
+    highest = 'IN';
+  }
+  if(countByCenter.TH > countByCenter[highest]){
+    highest = 'TH';
+  }
+  $('.personalityReport').append('<h3>' + highest + '</h3>');
 
   $('.reports').show();
 }
