@@ -1,4 +1,4 @@
-class Person {
+export class Person {
     constructor (
         firstName,
         lastName,
@@ -17,26 +17,31 @@ class Person {
         }
 }
 
-class PersonalityType = {
-    constructor (
-        center,
-        primary,
-        secondary
-    ){
-        this.center = center;
+export class PersonalityType{
+    constructor(primary, secondary, central){
         this.primary = primary;
         this.secondary = secondary;
+        this.central = central;
+        this.type = {
+            B:{
+                b:6,
+                l:5,
+                w:7
+            },
+            G:{
+                g:3,
+                f:2,
+                t:4
+            },
+            R:{
+                r:9,
+                o:1,
+                p:8
+            }
+        };
     }
-}
 
-get PersonalityType() {
-    return
-        this.center +
-        this.primary +
-        this.secondary 
-        // lookup value of result of primary + secondary in table.
-}
-
-PersonalityTypes = {
-
+    getPersonalityType(){
+        return this.type[this.primary][this.secondary];
+    }
 }
