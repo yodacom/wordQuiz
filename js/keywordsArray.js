@@ -1,4 +1,4 @@
-var keywords = [
+const keywords = [
     {
         "word": "Self Controlled",
         "id": "1",

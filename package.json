@@ -2,7 +2,7 @@
   "name": "wordquiz",
   "version": "1.0.0",
   "description": "This quiz evaluates personality type by letting user choose words and based on words choosen and attributes attached to each word selected evaluate to a personality typology grouped into 9 types and subtypes.",
-  "main": "app.js",
+  "main": "./js/app.js",
   "scripts": {
     "build": "webpack",
     "start": "node_modules/.bin/webpack-dev-server"

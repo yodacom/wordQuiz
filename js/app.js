@@ -1,5 +1,5 @@
 let $ = require('jquery');
-import {Person, PersonalityType} from './person';
+import {Person, PersonalityType} from './js/person';
 
 /* eslint-env jquery */
 
