@@ -1,4 +1,4 @@
-import { Person, PersonalityType } from 'js/person';
+import { Person, PersonalityType } from './person';
 
 const $ = require('jquery');
 
@@ -10,7 +10,7 @@ const $ = require('jquery');
 // After all the word groups have been seen and selections made, then, based on the words choosen, and other keys related to those words are calculated, a personality profile will be displayed with information about their personality.
 
 let currentWords = [];
-const bestWords = [];
+const person = new Person();
 
 // CLICK TO MOVE WORD FROM NON SELECTED TO SELECTED
 
@@ -18,35 +18,33 @@ function moveWord(elem) {
   const word = $(this).text();
   $(this).detach().appendTo('#answerListBox .bestWords');
   const index = currentWords.findIndex((w) => w.word == word);
-  bestWords.push(currentWords[index]);
+  person.addWord(currentWords[index]);
   currentWords.splice(index, 1);
-
-  console.log(currentWords);
-  console.log(bestWords);
 }
 
 function removeWord() {
   const word = $(this).text();
   $(this).detach().appendTo('#chooseWordBox .wordlist');
 
-  const index = bestWords.findIndex((w) => w.word == word);
-  currentWords.push(bestWords[index]);
-  bestWords.splice(index, 1);
+  person.removeWord(word);
+  currentWords.push(word);
 
-  console.log(currentWords);
-  console.log(bestWords);
+}
+
+function performAnalysis(){
+  person.analysis();
+  personalityReport();
 }
 
 function displayWordGroup(keywords) {
   if (keywords.length == 0) {
     $('.wordlist').append('<h3> End of list Press the Analysis button to see your profile </h4>');
     $('#btnNext').off();
-    $('#btnNext').click(analysis);
+    $('#btnNext').click(performAnalysis);
     $('#btnNext').text('Analysis');
   } else {
     currentWords = [];
     $('.wordlist').empty();
-
     for (let i = 0; i < 5; i++) {
       const rnd = Math.floor(Math.random() * keywords.length);
       const word = keywords[rnd];
@@ -60,6 +58,7 @@ function displayWordGroup(keywords) {
 }
 
 $(() => {
+
   displayWordGroup(keywords);
 
   $('#btnNext').click((e) => {
@@ -73,67 +72,27 @@ $(() => {
   $('#ref_btn').click(refreshPage);
 });
 
-// Analysis function
-function analysis() {
-  const count = function (ary, classifier) {
-    return ary.reduce((counter, item) => {
-      const p = (classifier || String)(item);
-      counter[p] = counter.hasOwnProperty(p) ? counter[p] + 1 : 1;
-      return counter;
-    }, {});
-  };
 
-  const countByCenter = count(bestWords, (item) => item.center);
-
-  const countByPrimary = count(bestWords, (item) => item.primary);
-
-  const Secondary = (bestWords, (item) => item.secondary);
-
-  personalityReport(countByCenter);
-}
 
 
 // GENERATE REPORT
 
 // Personality Analysis
 
-function personalityReport(countByCenter) {
+function personalityReport() {
     // hide quiz boxes to show report
   $('.contentBox').hide();
   $('.headerBox').hide();
   $('.contentBoxDescription').hide();
   $('.actions').hide();
 
-// Center Analysis
-  let highestCenter = '';
-  if (countByCenter.FE > countByCenter.IN) {
-    highestCenter = 'FE';
-  } else{
-    highestCenter = 'IN';
-  }
-  if (countByCenter.TH > countByCenter[highestCenter]) {
-    highestCenter = 'TH';
-  }
-  $('.personalityReport').append(`<h3>${  highestCenter  }</h3>`);
+  $('.personalityReport').append(`<h3>${  person.getCenter()  }</h3>`);
+  $('.personalityReport').append(`<h3>${  person.getPrimary()  }</h3>`);
+
+  $('.personalityReport').append(`<h3>${  person.getSecondary()  }</h3>`);
 
   $('.reports').show();
 }
-
-let highestPrimary = '';
-if (countByPrimary.B > countByPrimary.G) {
-  highestPrimary = 'B';
-} else {
-  highestPrimary = 'G';
-}
-if (countByPrimary.R > countByPrimary[highestPrimary]) {
-  highestPrimary = 'R';
-}
-$('.personalityReport').append(`<h3${  highestPrimary  }</h3>`);
-
-const Secondary = '';
-
-$('.personalityReport').append(`<h3${  Secondary  }</h3>`);
-
 
 function refreshPage() {
   location.reload();
