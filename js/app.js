@@ -1,4 +1,4 @@
-import { Person, PersonalityType } from 'js/person.js';
+import { Person, PersonalityType } from 'js/person';
 
 let $ = require('jquery');
 
@@ -90,6 +90,15 @@ function analysis() {
   let countByCenter = count(bestWords, (item) => {
     return item.center;
   });
+
+  let countByPrimary = count(bestWords,(item) => {
+    return item.primary;
+  });
+
+  let Secondary = (bestWords,(item) => {
+    return item.secondary;
+  });
+
   personalityReport(countByCenter);
 }
 
@@ -107,19 +116,34 @@ function personalityReport(countByCenter) {
   $('.actions').hide();
 
 // Center Analysis
-  let highest = '';
+  let highestCenter = '';
   if(countByCenter.FE > countByCenter.IN){
-    highest = 'FE';
+    highestCenter = 'FE';
   }else{
-    highest = 'IN';
+    highestCenter = 'IN';
   }
-  if(countByCenter.TH > countByCenter[highest]) {
-    highest = 'TH';
+  if(countByCenter.TH > countByCenter[highestCenter]) {
+    highestCenter = 'TH';
   }
-  $('.personalityReport').append('<h3>' + highest + '</h3>');
+  $('.personalityReport').append('<h3>' + highestCenter + '</h3>');
 
   $('.reports').show();
+} 
+
+let highestPrimary = '';
+if(countByPrimary.B > countByPrimary.G){
+  highestPrimary = 'B';
+} else {
+  highestPrimary = 'G';
 }
+if (countByPrimary.R > countByPrimary[highestPrimary]) {
+  highestPrimary = 'R';
+}
+$('.personalityReport').append('<h3' + highestPrimary + '</h3>');
+
+let Secondary = '';
+
+$('.personalityReport').append('<h3' + Secondary + '</h3>');
 
 
 function refreshPage() {
@@ -156,15 +180,29 @@ function personalityReport3(countBySecondary) {
   $('.contentBoxDescription').hide();
   $('.actions').hide();
 
-  // Secondary Analysis
+  // Type Calc Analysis
 
-  if (countBySecondary.R > countBySecondary.B && countBySecondary.R > countBySecondary.G) {
-    $('.personalityReport').append('<h3>' + R + '</h4>' + '<br/>' + More);
-  } else if (countBySecondary.B > countBySecondary.R && countBySecondary.B > countBySecondary.G) {
-      $('.personalityReport').append('<h3>' + B + '</h4>' + '<br/>' + More);
-    } else if (countBySecondary.G > countBySecondary.R && countBySecondary.G > countBySecondary.R) {
-      $('.personalityReport').append('<h3>' + G + '</h4>' + '<br/>' + More);
-    }    else {
+  if (primary.R and secondary.o) {
+    $('.personalityReport').append('<h3>' + one + '</h4>' + '<br/>' + More);
+    } else if (primary.G && secondary.f) {
+      $('.personalityReport').append('<h3>' + Two + '</h4>' + '<br/>' + More);
+    } else if (primary.G && Secondary.g) {
+      $('.personalityReport').append('<h3>' + Three + '</h4>' + '<br/>' + More);
+    } else if (primary.G && Secondary.t) {
+      $('.personalityReport').append('<h3>' + Four + '</h4>' + '<br/>' + More);
+    } else if (primary.B && Secondary.l) {
+      $('.personalityReport').append('<h3>' + Five + '</h4>' + '<br/>' + More);
+    } else if (primary.B && Secondary.b){
+      $('.personalityReport').append('<h3>' + Six + '</h4>' + '<br/>' + More);
+    } else if (primary.B && Secondary.w) {
+      $('.personalityReport').append('<h3>' + Seven + '</h4>' + '<br/>' + More);
+    } else if (primary.R && Secondary.p) {
+      $('.personalityReport').append('<h3>' + Eight + '</h4>' + '<br/>' + More);
+    } else (primary.R && Secondary.r) {
+      $('.personalityReport').append('<h3>' + Nine + '</h4>' + '<br/>' + More);
+    }
       $('.personalityReport').append('<h3>' + Ba + '</h4>' + '<br/>' + More);
     }
-}
+};
+
+ 
