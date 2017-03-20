@@ -1,5 +1,7 @@
+import { Person, PersonalityType } from 'js/person.js';
+
 let $ = require('jquery');
-import {Person, PersonalityType} from './js/person';
+
 
 /* eslint-env jquery */
 
@@ -111,7 +113,7 @@ function personalityReport(countByCenter) {
   }else{
     highest = 'IN';
   }
-  if(countByCenter.TH > countByCenter[highest]){
+  if(countByCenter.TH > countByCenter[highest]) {
     highest = 'TH';
   }
   $('.personalityReport').append('<h3>' + highest + '</h3>');
@@ -132,7 +134,6 @@ function personalityReport2(countByPrimary) {
   $('.headerBox').hide();
   $('.contentBoxDescription').hide();
   $('.actions').hide();
-  
   // Primary Analysis
 
   if (countByPrimary.R > countByPrimary.B && countByPrimary.R > countByPrimary.G) {
@@ -154,7 +155,7 @@ function personalityReport3(countBySecondary) {
   $('.headerBox').hide();
   $('.contentBoxDescription').hide();
   $('.actions').hide();
-  
+
   // Secondary Analysis
 
   if (countBySecondary.R > countBySecondary.B && countBySecondary.R > countBySecondary.G) {
