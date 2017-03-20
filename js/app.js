@@ -1,4 +1,4 @@
-import { Person, PersonalityType } from 'js/person';
+import { Person, PersonalityType } from './person';
 
 const $ = require('jquery');
 
@@ -90,6 +90,7 @@ function analysis() {
   const Secondary = (bestWords, (item) => item.secondary);
 
   personalityReport(countByCenter);
+
 }
 
 
