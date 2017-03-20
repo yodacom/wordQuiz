@@ -1,6 +1,6 @@
 import { Person, PersonalityType } from 'js/person';
 
-let $ = require('jquery');
+const $ = require('jquery');
 
 
 /* eslint-env jquery */
@@ -10,16 +10,14 @@ let $ = require('jquery');
 // After all the word groups have been seen and selections made, then, based on the words choosen, and other keys related to those words are calculated, a personality profile will be displayed with information about their personality.
 
 let currentWords = [];
-let bestWords = [];
+const bestWords = [];
 
 // CLICK TO MOVE WORD FROM NON SELECTED TO SELECTED
 
 function moveWord(elem) {
-  let word = $(this).text();
+  const word = $(this).text();
   $(this).detach().appendTo('#answerListBox .bestWords');
-  let index = currentWords.findIndex((w) => {
-    return w.word == word;
-  });
+  const index = currentWords.findIndex((w) => w.word == word);
   bestWords.push(currentWords[index]);
   currentWords.splice(index, 1);
 
@@ -28,12 +26,10 @@ function moveWord(elem) {
 }
 
 function removeWord() {
-  let word = $(this).text();
+  const word = $(this).text();
   $(this).detach().appendTo('#chooseWordBox .wordlist');
 
-  let index = bestWords.findIndex((w) => {
-    return w.word == word;
-  });
+  const index = bestWords.findIndex((w) => w.word == word);
   currentWords.push(bestWords[index]);
   bestWords.splice(index, 1);
 
@@ -52,12 +48,12 @@ function displayWordGroup(keywords) {
     $('.wordlist').empty();
 
     for (let i = 0; i < 5; i++) {
-        let rnd = Math.floor(Math.random() * keywords.length);
-        let word = keywords[rnd];
-        currentWords.push(word);
-        keywords.splice(rnd, 1);
-        $('.wordlist').append(`<span class='word'>${  word.word  }</span>`);
-      }
+      const rnd = Math.floor(Math.random() * keywords.length);
+      const word = keywords[rnd];
+      currentWords.push(word);
+      keywords.splice(rnd, 1);
+      $('.wordlist').append(`<span class='word'>${word.word }</span>`);
+    }
 
     console.log(currentWords);
   }
@@ -79,29 +75,22 @@ $(() => {
 
 // Analysis function
 function analysis() {
-  let count = function (ary, classifier) {
+  const count = function (ary, classifier) {
     return ary.reduce((counter, item) => {
-        let p = (classifier || String)(item);
-        counter[p] = counter.hasOwnProperty(p) ? counter[p] + 1 : 1;
-        return counter;
-      }, {});
+      const p = (classifier || String)(item);
+      counter[p] = counter.hasOwnProperty(p) ? counter[p] + 1 : 1;
+      return counter;
+    }, {});
   };
 
-  let countByCenter = count(bestWords, (item) => {
-    return item.center;
-  });
+  const countByCenter = count(bestWords, (item) => item.center);
 
-  let countByPrimary = count(bestWords,(item) => {
-    return item.primary;
-  });
+  const countByPrimary = count(bestWords, (item) => item.primary);
 
-  let Secondary = (bestWords,(item) => {
-    return item.secondary;
-  });
+  const Secondary = (bestWords, (item) => item.secondary);
 
   personalityReport(countByCenter);
 }
-
 
 
 // GENERATE REPORT
@@ -117,21 +106,21 @@ function personalityReport(countByCenter) {
 
 // Center Analysis
   let highestCenter = '';
-  if(countByCenter.FE > countByCenter.IN){
+  if (countByCenter.FE > countByCenter.IN) {
     highestCenter = 'FE';
-  }else{
+  } else{
     highestCenter = 'IN';
   }
-  if(countByCenter.TH > countByCenter[highestCenter]) {
+  if (countByCenter.TH > countByCenter[highestCenter]) {
     highestCenter = 'TH';
   }
-  $('.personalityReport').append('<h3>' + highestCenter + '</h3>');
+  $('.personalityReport').append(`<h3>${  highestCenter  }</h3>`);
 
   $('.reports').show();
-} 
+}
 
 let highestPrimary = '';
-if(countByPrimary.B > countByPrimary.G){
+if (countByPrimary.B > countByPrimary.G) {
   highestPrimary = 'B';
 } else {
   highestPrimary = 'G';
@@ -139,11 +128,11 @@ if(countByPrimary.B > countByPrimary.G){
 if (countByPrimary.R > countByPrimary[highestPrimary]) {
   highestPrimary = 'R';
 }
-$('.personalityReport').append('<h3' + highestPrimary + '</h3>');
+$('.personalityReport').append(`<h3${  highestPrimary  }</h3>`);
 
-let Secondary = '';
+const Secondary = '';
 
-$('.personalityReport').append('<h3' + Secondary + '</h3>');
+$('.personalityReport').append(`<h3${  Secondary  }</h3>`);
 
 
 function refreshPage() {
@@ -161,13 +150,13 @@ function personalityReport2(countByPrimary) {
   // Primary Analysis
 
   if (countByPrimary.R > countByPrimary.B && countByPrimary.R > countByPrimary.G) {
-    $('.personalityReport').append('<h3>' + R + '</h4>' + '<br/>' + More);
+    $('.personalityReport').append(`<h3>${  R  }</h4>` + `<br/>${  More}`);
   } else if (countByPrimary.B > countByPrimary.R && countByPrimary.B > countByPrimary.G) {
-      $('.personalityReport').append('<h3>' + B + '</h4>' + '<br/>' + More);
-    } else if (countByPrimary.G > countByPrimary.R && countByPrimary.G > countByPrimary.R) {
-      $('.personalityReport').append('<h3>' + G + '</h4>' + '<br/>' + More);
-    }    else {
-      $('.personalityReport').append('<h3>' + Ba + '</h4>' + '<br/>' + More);
+    $('.personalityReport').append(`<h3>${  B  }</h4>` + `<br/>${  More}`);
+  } else if (countByPrimary.G > countByPrimary.R && countByPrimary.G > countByPrimary.R) {
+      $('.personalityReport').append(`<h3>${  G  }</h4>` + `<br/>${  More}`);
+    } else {
+      $('.personalityReport').append(`<h3>${  Ba  }</h4>` + `<br/>${  More}`);
     }
 }
 
@@ -182,27 +171,25 @@ function personalityReport3(countBySecondary) {
 
   // Type Calc Analysis
 
-  if (primary.R and secondary.o) {
-    $('.personalityReport').append('<h3>' + one + '</h4>' + '<br/>' + More);
-    } else if (primary.G && secondary.f) {
-      $('.personalityReport').append('<h3>' + Two + '</h4>' + '<br/>' + More);
+  if (primary.R && secondary.o) {
+    $('.personalityReport').append(`<h3>${  one  }</h4>` + `<br/>${  More}`);
+  } else if (primary.G && secondary.f) {
+      $('.personalityReport').append(`<h3>${  Two  }</h4>` + `<br/>${  More}`);
     } else if (primary.G && Secondary.g) {
-      $('.personalityReport').append('<h3>' + Three + '</h4>' + '<br/>' + More);
+      $('.personalityReport').append(`<h3>${  Three  }</h4>` + `<br/>${  More}`);
     } else if (primary.G && Secondary.t) {
-      $('.personalityReport').append('<h3>' + Four + '</h4>' + '<br/>' + More);
+      $('.personalityReport').append(`<h3>${  Four  }</h4>` + `<br/>${  More}`);
     } else if (primary.B && Secondary.l) {
-      $('.personalityReport').append('<h3>' + Five + '</h4>' + '<br/>' + More);
-    } else if (primary.B && Secondary.b){
-      $('.personalityReport').append('<h3>' + Six + '</h4>' + '<br/>' + More);
+      $('.personalityReport').append(`<h3>${  Five  }</h4>` + `<br/>${  More}`);
+    } else if (primary.B && Secondary.b) {
+      $('.personalityReport').append(`<h3>${  Six  }</h4>` + `<br/>${  More}`);
     } else if (primary.B && Secondary.w) {
-      $('.personalityReport').append('<h3>' + Seven + '</h4>' + '<br/>' + More);
+      $('.personalityReport').append(`<h3>${  Seven  }</h4>` + `<br/>${  More}`);
     } else if (primary.R && Secondary.p) {
-      $('.personalityReport').append('<h3>' + Eight + '</h4>' + '<br/>' + More);
-    } else (primary.R && Secondary.r) {
-      $('.personalityReport').append('<h3>' + Nine + '</h4>' + '<br/>' + More);
+      $('.personalityReport').append(`<h3>${  Eight  }</h4>` + `<br/>${  More}`);
+    } else if (primary.R && Secondary.r) {
+      $('.personalityReport').append(`<h3>${  Nine  }</h4>` + `<br/>${  More}`);
     }
-      $('.personalityReport').append('<h3>' + Ba + '</h4>' + '<br/>' + More);
-    }
-};
+  $('.personalityReport').append(`<h3>${  Ba  }</h4>` + `<br/>${  More}`);
+}
 
- 
