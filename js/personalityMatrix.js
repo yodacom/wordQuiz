@@ -1,4 +1,4 @@
-const typeMatrix = [
+export const TypeMatrix = [
     {
         "primary": "R",
         "secondary": "o",

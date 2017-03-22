@@ -1,3 +1,6 @@
+import { TypeMatrix } from './personalityMatrix';
+import { TypeReport } from './personalReport';
+
 export class Person {
   constructor(
     firstName,
@@ -38,15 +41,26 @@ export class Person {
     this.countByCenter = count(this.bestWords, (item) => item.center);
 
     this.countByPrimary = count(this.bestWords, (item) => item.primary_group);
+    const primary = this.getPrimary();
+    const secondaryWords = this.bestWords.filter((word)=>{
+        return word.primary_group === primary ;
+    });
+    console.log(secondaryWords);
 
-    this.countBySecondary = count(this.bestWords, (item) => item.secondary_group);
+    this.countBySecondary = count(secondaryWords, (item) => item.secondary_group);
 
     // console.log(countByCenter);
     // console.log(countByPrimary);
-    // console.log(countBySecondary);
+    console.log(this.countBySecondary);
 
     //personalityReport(countByCenter);
 }
+
+    getPersonalityType(){
+
+    }
+
+
 
   getCenter(){
       let highestCenter = '';
@@ -77,12 +91,21 @@ export class Person {
   }
 
   getSecondary(){
-    return 'UNKNOWN';
+    this.secondary =  Object.keys(this.countBySecondary).reduce((acc, curr)=>{
+        return this.countBySecondary[curr] > this.countBySecondary[acc] ? curr : acc ;
+    });
+    return this.secondary;
   }
 
 
   getType(){
+        return TypeMatrix.find((T)=>{
+            return T.primary === this.primary && T.secondary == this.secondary;
+        }).type;
+  }
 
+  getReport(){
+        return TypeReport[this.getType()];
   }
 
 }

@@ -70,8 +70,8 @@ $(() => {
   $('#answerListBox').on('click', '.word', removeWord);
 
   $('#ref_btn').click(refreshPage);
-});
 
+});
 
 
 
@@ -90,6 +90,7 @@ function personalityReport() {
   $('.personalityReport').append(`<h3>${  person.getPrimary()  }</h3>`);
 
   $('.personalityReport').append(`<h3>${  person.getSecondary()  }</h3>`);
+  $('.personalityReport').append(`<p>${  person.getReport()  }</p>`);
 
   $('.reports').show();
 }
