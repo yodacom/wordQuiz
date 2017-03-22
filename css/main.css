@@ -15,11 +15,15 @@ body {
   padding: 60px;
   min-height: 100%;
   font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
 }
 
-boxTopLabel {
+.boxTopLabel {
   text-decoration-style: gray;
-  color:blue;
+  color:#E48681;
+  font-size: 20px;
+  font-weight: bolder;
+  
 }
 
 main {
@@ -31,6 +35,10 @@ main {
   display:flex;
   flex-basis: 600px;
   flex-direction: column;
+}
+
+.hr2{
+	  border-top: 3px double #8c8b8b;
 }
 
 .row{
@@ -78,11 +86,10 @@ main {
   text-align: center;
   padding-top: 30px;
   padding-left: 20px;
-  padding-right: 0px;
+  padding-right: 20px;
   border: 1px solid gray;
   margin-bottom: 20px;
-    flex:1;
-    /*border: 1px solid blue;*/
+  flex:1;
 }
 
 .chooseWordBox {
@@ -92,7 +99,7 @@ main {
   padding-right: 20px;
   border: 1px solid gray;
   margin-bottom: 20px;
-    flex:1;
+  flex:1;
 }
 
 .contentBoxDescription {

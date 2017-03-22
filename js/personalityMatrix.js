@@ -1,4 +1,4 @@
-const = [
+const typeMatrix = [
     {
         "primary": "R",
         "secondary": "o",

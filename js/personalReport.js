@@ -32,8 +32,10 @@ const eight = 'Your Type is 8 - The Challenger (the powerful, aggressive type) E
 
 const nine = 'Your Type is 9 - The Peacemaker (the easy  going, self  effacing type)Nines are accepting, trusting, and stable. They are usually creative ,optimistic, and supportive; they can also be too willing to go along with others to keep the peace.  They want everything to go smoothly and be without conflict, but they can also tend to be complacent, simplifying problems and minimizing anything upsetting.  They typically have problem with inertia  and stubbornness. At their best: indomitable, all-embracing, able to bring people together  and heal conflicts.';
 
-const Ba = 'You do not have a dominant personal center type yet.  You may want to review your word choices again.';
+const Ba = 'You do not have a dominant personal center ot type yet.  You may want to review your word choices again.';
 
 const fullLink = "<a href='http://www.aktheos.com'>Your personal growth path report</a>";
 
 const More = ` For more more information on your traits and personality check out ${fullLink} to explore more deeply more aspects of your personal profile `;
+
+
